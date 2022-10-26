@@ -1,0 +1,18 @@
+//- https://qiita.com/sszzszsz/items/c206b3536818bb9db7be
+//- https://www.webcreatorbox.com/tech/css-gradient
+//- https://iconbu.com/illust/category/freeicon/animalfreeicon
+extends _layout.pug
+block locals
+  - let title = "Hello Pug!"
+block content
+  main
+    .content
+      .simplyPiano
+        .simplyPiano__display
+          p.simplyPiano__display-text Let's Play the Piano ♪
+
+        .simplyPiano__keyboard
+          include _data.pug
+            each item in items
+              div.simplyPiano__keys(class=item.className)
+                p #{item.displayText}
