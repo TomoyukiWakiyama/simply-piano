@@ -1,3 +1,7 @@
+/**
+ * 起動時に「Let's Play ~」をウェーブ
+ * それが終わると鍵盤をドからホバーして流していく
+ */
 export default class Piano {
   displayElm: HTMLDivElement;
   displayTextElm: HTMLDivElement;

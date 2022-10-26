@@ -1,5 +1,14 @@
 @use "_reset";
-
+$keyItems: (
+  "do": 0.7,
+  "re": 0.74,
+  "mi": 0.78,
+  "fa": 0.82,
+  "so": 0.86,
+  "ra": 0.9,
+  "si": 0.94,
+  "octDo": 0.98,
+);
 .content {
   & .title {
     font-size: 24px;
@@ -38,15 +47,6 @@
       height: 100%;
       transform: translateY(-100%);
     }
-    // &::before {
-    // position: absolute;
-    // z-index: 3;
-    // content: url(https://via.placeholder.com/100);
-    // width: 5px;
-    // height: 5px;
-    // top: 50%;
-    // left: 20%;
-    // }
   }
 
   &__keyboard {
@@ -57,20 +57,22 @@
   &__keys {
     position: relative;
     z-index: 5;
-    background-color: skyblue;
-    opacity: 0.8;
+    background-color: rgb(135, 206, 235, 0.9);
     width: calc((100% / 8) - 4px);
     height: 120px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    cursor: pointer;
-    // shodowも入れたい
     box-shadow: 0px 5px 5px -5px #777777;
+    cursor: pointer;
     transition: all 0.4s;
-    &:hover {
-      background-color: #0093e9;
-      opacity: 1;
+
+    @each $key, $opa in $keyItems {
+      &.#{$key}:hover {
+        background-color: rgb(0, 147, 233);
+        opacity: #{$opa};
+      }
     }
+
     &:active {
       background-color: #006098;
     }
@@ -79,9 +81,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #fff;
+      color: whitesmoke;
+      text-shadow: 1px 2px 0.5px rgba(245, 245, 245, 0.2);
+      font-weight: 600;
     }
   }
+}
+
+@mixin mx-key-inview() {
 }
 
 @keyframes sk-piano-display {
