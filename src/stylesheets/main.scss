@@ -88,6 +88,35 @@ $keyItems: (
   }
 }
 
+// autoPlay
+.autoPlay {
+  margin-top: 40px;
+  text-align: center;
+  &__btn {
+    display: inline-block;
+    width: 300px;
+    max-width: 100%;
+    padding: 20px 10px;
+    // background-color: #0e3453;
+    background: #f953c6; /* fallback for old browsers */
+    background: linear-gradient(to right, #f953c6, #b91d73);
+    border: 2px solid transparent;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    color: #fff;
+    font-size: 1.125rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+  &__btn:focus,
+  &__btn:hover {
+    color: yellow;
+    outline: none;
+  }
+}
+
 @mixin mx-key-inview() {
 }
 

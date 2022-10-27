@@ -1,9 +1,10 @@
 //- https://qiita.com/sszzszsz/items/c206b3536818bb9db7be
 //- https://www.webcreatorbox.com/tech/css-gradient
 //- https://iconbu.com/illust/category/freeicon/animalfreeicon
+//- 文字の幅を広げる
 extends _layout.pug
 block locals
-  - let title = "Hello Pug!"
+  - let title = "Simply Piano"
 block content
   main
     .content
@@ -16,3 +17,6 @@ block content
             each item in items
               div.simplyPiano__keys(class=item.className)
                 p #{item.displayText}
+
+      .autoPlay
+        button.autoPlay__btn AutoPlay ♪
