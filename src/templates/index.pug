@@ -8,15 +8,19 @@ block locals
 block content
   main
     .content
-      .simplyPiano
-        .simplyPiano__display
-          p.simplyPiano__display-text Let's Play the Piano ♪
+      .display
+        p.display__heading Let's Play the Piano ♪
+        .decoration
+          ul.decoration__list
+            - for (var i = 1; i < 11; i++)
+              li.decoration__item(class="star-" + i) ★
+              //- li.decoration__item(class="flower-" + i) ❀
 
-        .simplyPiano__keyboard
-          include _data.pug
-            each item in items
-              div.simplyPiano__keys(class=item.className)
-                p #{item.displayText}
+      .keyboard
+        include _data.pug
+          each item in items
+            div.keyboard__keys(class=item.className)
+              p #{item.displayText}
 
       .autoPlay
         button.autoPlay__btn AutoPlay ♪

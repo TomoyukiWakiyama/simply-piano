@@ -3,7 +3,7 @@ import Piano from "./piano";
 
 const p1 = new Piano("aaa");
 p1.autoPlayHandler();
-
+p1.keyboardHandler();
 // function twinkle(val) {
 // return new Promise(function (resolve) {
 // setTimeout(function () {
