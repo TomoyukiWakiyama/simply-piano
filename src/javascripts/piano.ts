@@ -8,7 +8,8 @@
 export default class Piano {
   displayElm: HTMLDivElement;
   displayTextElm: HTMLDivElement;
-  decorationItemElms: NodeListOf<Element>;
+  decorationStarItemElms: NodeListOf<Element>;
+  decorationFlowerItemElms: NodeListOf<Element>;
   keyboardElms: NodeListOf<Element>;
   autoPlayElm: HTMLButtonElement;
   timeoutId: NodeJS.Timeout;
@@ -29,7 +30,12 @@ export default class Piano {
     // 自動演奏ボタンを取得
     this.autoPlayElm = document.querySelector(".autoPlay__btn");
 
-    this.decorationItemElms = document.querySelectorAll(".decoration__item");
+    this.decorationStarItemElms = document.querySelectorAll(
+      ".decoration__item-star"
+    );
+    this.decorationFlowerItemElms = document.querySelectorAll(
+      ".decoration__item-flower"
+    );
   }
 
   keyboardHandler() {
@@ -86,7 +92,7 @@ export default class Piano {
       function () {
         console.log("decoration");
         // 1.8毎にsetInterval回して、2分の1でinviewをつけるようにする
-        this.decorationItemElms.forEach((item) => {
+        this.decorationStarItemElms.forEach((item) => {
           item.classList.remove("inview");
           let randomNum = Math.floor(Math.random() * 2 + 1);
           let addInviewBool = Boolean(randomNum % 2 === 0);

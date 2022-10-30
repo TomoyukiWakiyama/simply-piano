@@ -93,13 +93,26 @@ $decorationPosition: (
     margin: 0;
     padding: 0;
     list-style: none;
+    font-size: 20px;
     @for $i from 1 through 11 {
       & > .star-#{$i} {
         color: yellow;
         position: absolute;
         opacity: 0;
         &.inview {
-          animation-name: sk-decoration-star;
+          animation-name: sk-decoration;
+          animation-duration: 2s;
+          animation-fill-mode: both;
+        }
+      }
+    }
+    @for $i from 1 through 11 {
+      & > .flower-#{$i} {
+        color: white;
+        position: absolute;
+        opacity: 0;
+        &.inview {
+          animation-name: sk-decoration;
           animation-duration: 2s;
           animation-fill-mode: both;
         }
@@ -107,6 +120,12 @@ $decorationPosition: (
     }
     @each $className, $position in $decorationPosition {
       & > .star#{$className} {
+        top: map-get($position, top);
+        left: map-get($position, left);
+      }
+    }
+    @each $className, $position in $decorationPosition {
+      & > .flower#{$className} {
         top: map-get($position, top);
         left: map-get($position, left);
       }
@@ -192,7 +211,7 @@ $decorationPosition: (
   }
 }
 
-@keyframes sk-decoration-star {
+@keyframes sk-decoration {
   0% {
     opacity: 0;
   }

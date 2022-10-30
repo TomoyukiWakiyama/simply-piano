@@ -13,8 +13,8 @@ block content
         .decoration
           ul.decoration__list
             - for (var i = 1; i < 11; i++)
-              li.decoration__item(class="star-" + i) ★
-              //- li.decoration__item(class="flower-" + i) ❀
+              li.decoration__item-star(class="star-" + i) ★
+              li.decoration__item-flower(class="flower-" + i) ❀
 
       .keyboard
         include _data.pug
