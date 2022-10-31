@@ -54,14 +54,15 @@ $decorationPosition: (
 );
 
 .content {
-  & .title {
-    font-size: 24px;
-  }
+  max-width: 960px;
+  margin: 0 auto;
 }
 
+// display
 .display {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+  margin: 0 auto;
   width: 100%;
   height: 200px;
   background: linear-gradient(160deg, #0093e9, #09ffe2);
@@ -69,6 +70,13 @@ $decorationPosition: (
   background-position: 0% 0%;
   &.inview {
     animation: sk-piano-display 1s ease;
+  }
+  &__autoPlayHeading {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
   }
   &__heading {
     position: absolute;
@@ -81,6 +89,7 @@ $decorationPosition: (
   }
 }
 
+// decoration
 .decoration {
   position: absolute;
   top: 0;
@@ -107,8 +116,8 @@ $decorationPosition: (
       }
     }
     @for $i from 1 through 11 {
-      & > .flower-#{$i} {
-        color: white;
+      & > .tulip-#{$i} {
+        color: #ffb6c1;
         position: absolute;
         opacity: 0;
         &.inview {
@@ -125,7 +134,7 @@ $decorationPosition: (
       }
     }
     @each $className, $position in $decorationPosition {
-      & > .flower#{$className} {
+      & > .tulip#{$className} {
         top: map-get($position, top);
         left: map-get($position, left);
       }
@@ -133,41 +142,49 @@ $decorationPosition: (
   }
 }
 
+// keyboard
 .keyboard {
   display: flex;
   justify-content: space-between;
 
   &__keys {
     position: relative;
-    z-index: 5;
+    z-index: 1;
     background-color: rgb(135, 206, 235, 0.9);
-    width: calc((100% / 8) - 4px);
+    width: calc((100% / 7) - 4px);
     height: 120px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     box-shadow: 0px 5px 5px -5px #777777;
     cursor: pointer;
+    transform: translateY(-2px);
     transition: all 0.4s;
 
     @each $key, $opa in $keyItems {
       &.#{$key}:hover {
         background-color: rgb(0, 147, 233);
         opacity: #{$opa};
+        transform: translateY(0);
+        box-shadow: none;
       }
     }
 
     &:active {
       background-color: #006098;
     }
-    & > p {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: whitesmoke;
-      text-shadow: 1px 2px 0.5px rgba(245, 245, 245, 0.2);
-      font-weight: 600;
+
+    &.inview {
+      background-color: teal;
     }
+  }
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: whitesmoke;
+    text-shadow: 1px 2px 0.5px rgba(245, 245, 245, 0.2);
+    font-weight: 600;
   }
 }
 
@@ -192,14 +209,15 @@ $decorationPosition: (
     text-decoration: none;
     transition: all 0.4s;
   }
-  &__btn:focus,
   &__btn:hover {
     color: yellow;
     outline: none;
+    transform: translateY(2px);
+    box-shadow: none;
   }
-}
-
-@mixin mx-key-inview() {
+  &__btn:focus {
+    outline: none;
+  }
 }
 
 @keyframes sk-piano-display {
